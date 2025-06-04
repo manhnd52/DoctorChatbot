@@ -1,0 +1,59 @@
+⭐ là tạo ra kết quả tốt
+0.Few-shot example
+Bệnh nhân có các triệu chứng khó tiêu, nấc cụt, bị phù. Hãy tìm xem bệnh nhân có thể mắc bệnh gì?
+Hãy mô tả về bệnh ung thư Pancreatic
+Mắc Covid cần thuốc gì?
+
+1. Thuốc - Bệnh (treats)
+Những loại thuốc nào được dùng để điều trị bệnh Alzheimer? ⭐
+
+Có thuốc nào điều trị tiểu đường không? ⭐
+
+2. Gene - Bệnh (associates)
+Những gene nào có liên quan đến bệnh ung thư vú? ⭐
+
+Gene nào liên quan đến bệnh Parkinson? ⭐
+
+3. Thuốc - Tác dụng phụ (causes)
+Thuốc nào có thể gây buồn nôn? ⭐
+
+Có thuốc nào gây ra chứng mất ngủ không? ⭐
+
+4. Thuốc - Gene (interacts, binds)
+Aspirin tương tác với những gene nào? -> Không có dữ liệu trong cơ sở dữ liệu, tuy nhiên truy vấn đúng→ Chatbox biết cách phản hồi không có dữ liệu
+Caffeine có thể ảnh hưởng đến gene nào?  ⭐
+Thuốc Ibuprofen tương tác với gene nào?
+
+5. Nhóm dược lý - Thuốc (includes)
+Các thuốc thuộc nhóm NSAIDs là gì?
+Nhóm dược lý “Statins” bao gồm những thuốc nào?
+
+6. Gene - Gene (regulates, upregulates, downregulates)
+Gene TP53 điều hòa gene nào khác?
+Có gene nào bị điều hòa giảm bởi BRCA1 không?
+
+7. Gene - Quá trình sinh học (participates)
+Gene nào tham gia vào quá trình apoptosis?
+Những gene nào liên quan đến pathway “MAPK signaling”?
+
+8. Triệu chứng - Bệnh (associate)
+Sốt có liên quan đến những bệnh nào? 
+Bệnh ung thư da có triệu chứng như thế nào? (có dữ liệu trong DB) → lỗi tìm tên bệnh ung thư da, không có xử lý toLower
+Những triệu chứng nào liên quan đến bệnh cúm? → Không có dữ liệu trong cơ sở dữ liệu, tuy nhiên xác định đúng tên bệnh và câu truy vấn
+
+9. Bệnh - Bệnh (resembles)
+Bệnh nào có đặc điểm giống bệnh lupus?
+Những bệnh nào giống nhau về biểu hiện?
+
+10. Gene - Gene (covaries with)
+Gene nào có biểu hiện đồng biến với gene EGFR?
+Có gene nào thường biến đổi đồng thời với KRAS không?
+
+11. Gene - bệnh
+Gene nào có thể gây ra bệnh tiểu đường? → lỗi tìm tên bệnh tiểu đường
+
+
+```cypher
+MATCH (s:Symptom)<-[:presents]-(d:Disease)
+
+WITH d, COLLECT(s.name) AS symptoms WHERE SIZE(symptoms) > 1 RETURN d.name, symptoms ```

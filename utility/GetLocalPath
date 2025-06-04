@@ -1,0 +1,9 @@
+import os
+
+def localPath(filename: str) -> str:
+    """
+    Trả về đường dẫn tuyệt đối đến file `filename` nằm trong cùng thư mục
+    với file mã nguồn đang chạy.
+    """
+    base_path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_path, filename)

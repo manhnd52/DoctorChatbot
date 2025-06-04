@@ -1,0 +1,113 @@
+
+# Node Properties:
+## Compound:
+- name
+- identifier
+- ko
+## Disease:
+- name
+- identifier
+- icd10
+- ko
+- description
+- disease_category
+## Gene:
+- name
+- identifier
+- ko
+- description
+## Pathway:
+- name
+- identifier
+## Symptom:
+- name
+- identifier
+## Molecular Function:
+- name
+- identifier
+## Side Effect:
+- name
+- identifier
+## Biological Process:
+- name
+- identifier
+## Cellular Component:
+- name
+- identifier
+## Pharmacologic Class:
+- name
+- identifier
+## Pathogen:
+- name
+- ko
+## Patient:
+- name
+- patient_id
+- gender
+## PatientUnitStay:
+- psid
+- hospitaldischargeyear
+## Diagnosis:
+- diagnosisid
+- diseasename
+## Anatomy:
+- name
+- identifier
+
+# Relationship Properties:
+
+# Node Between Relationships:
+- Disease -[associates]- Gene
+- Disease -[causes]- Pathogen
+- Disease -[treats]- Compound
+- Disease -[IS_DISEASE]- Diagnosis
+- Molecular Function -[participates]- Gene
+- Side Effect -[causes]- Compound
+- Gene -[upregulates]- Anatomy
+- Gene -[expresses]- Anatomy
+- Gene -[interacts]- Gene
+- Gene -[participates]- Biological Process
+- Gene -[participates]- Pathway
+- Gene -[participates]- Molecular Function
+- Gene -[participates]- Cellular Component
+- Gene -[downregulates]- Anatomy
+- Gene -[downregulates]- Disease
+- Gene -[regulates]- Gene
+- Gene -[associates]- Disease
+- Gene -[covaries]- Gene
+- Gene -[STRING]- Gene
+- Gene -[upregulates]- Compound
+- Biological Process -[participates]- Gene
+- Gene -[upregulates]- Disease
+- Gene -[downregulates]- Compound
+- Compound -[upregulates]- Gene
+- Compound -[downregulates]- Gene
+- Compound -[causes]- Side Effect
+- Compound -[binds]- Gene
+- Compound -[resembles]- Compound
+- Compound -[includes]- Pharmacologic Class
+- Compound -[palliates]- Disease
+- Pathway -[participates]- Gene
+- Anatomy -[localizes]- Disease
+- Anatomy -[expresses]- Gene
+- Cellular Component -[participates]- Gene
+- Compound -[treats]- Disease
+- Gene -[binds]- Compound
+- Disease -[upregulates]- Gene
+- Disease -[downregulates]- Gene
+- Disease -[localizes]- Anatomy
+- Disease -[resembles]- Disease
+- Disease -[presents]- Symptom
+- Pharmacologic Class -[includes]- Compound
+- Symptom -[presents]- Disease
+- Anatomy -[upregulates]- Gene
+- Anatomy -[downregulates]- Gene
+- Disease -[palliates]- Compound
+- Gene -[HAS_MUTATION]- Patient
+- Pathogen -[causes]- Disease
+- Patient -[HAS_STAY]- PatientUnitStay
+- PatientUnitStay -[HAS_DIAG]- Diagnosis
+- PatientUnitStay -[HAS_STAY]- Patient
+- Diagnosis -[IS_DISEASE]- Disease
+- Diagnosis -[HAS_DIAG]- PatientUnitStay
+- Patient -[HAS_MUTATION]- Gene
